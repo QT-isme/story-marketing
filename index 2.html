@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>發光四月陪跑賽｜故事行銷指南</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F5EDBE;
+    --gold-light: #FFF8E8;
+    --gold-mid: #E8D090;
+    --coral: #ECC3C9;
+    --dark: #1A1A1A;
+    --mid: rgba(255,255,255,0.9);
+    --light: #F7F5F0;
+    --white: #FEFEFE;
+    --teal: #A8C8E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    line-height: 1.7;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 20%, #2a2000 0%, #1A1A1A 60%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 85%, rgba(205,231,199,0.12) 0%, transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(205,231,199,0.1) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(205,231,199,0.07) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid rgba(245,237,190,0.35);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s ease both;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    animation: fadeUp 0.8s 0.1s ease both;
+    margin-bottom: 8px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 3vw, 22px);
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+    margin-bottom: 48px;
+  }
+
+  .hero-lead {
+    max-width: 520px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.3s ease both;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; }
+  .meta-item { text-align: center; }
+  .meta-label { font-size: 11px; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+  .meta-value { font-size: 16px; color: rgba(255,255,255,0.8); font-weight: 300; }
+
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.25); font-size: 11px; letter-spacing: 0.1em;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+  .scroll-hint::after {
+    content: ''; width: 1px; height: 32px;
+    background: linear-gradient(to bottom, rgba(205,231,199,0.5), transparent);
+    animation: pulse 2s infinite;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section { padding: 80px 24px; max-width: 800px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 16px; display: block;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700; line-height: 1.3; margin-bottom: 24px; color: var(--white);
+  }
+  .section-title .gold { color: var(--gold); }
+  .section-title .coral { color: var(--coral); }
+
+  .lead-text { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); font-weight: 300; margin-bottom: 16px; }
+
+  .divider { width: 48px; height: 2px; background: var(--gold); margin: 40px 0; }
+
+  /* ─── CARDS ─── */
+  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  @media (max-width: 600px) { .card-row { grid-template-columns: 1fr; } }
+
+  .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 28px 24px; }
+  .card-icon { font-size: 20px; margin-bottom: 12px; }
+  .card-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; color: rgba(255,255,255,0.92); }
+  .card-body { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.7; font-weight: 300; }
+  .card.gold-card { background: rgba(245,237,190,0.08); border-color: rgba(245,237,190,0.25); }
+  .card.gold-card .card-title { color: var(--gold); }
+  .card.coral-card { background: rgba(20,5,5,0.6); border-color: rgba(236,195,201,0.35); }
+  .card.coral-card .card-title { color: var(--coral); }
+
+  /* ─── SCORE ─── */
+  .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  @media (max-width: 600px) { .score-grid { grid-template-columns: 1fr; } }
+  .score-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
+  .score-block-header { background: var(--gold); color: #111111; font-weight: 700; font-size: 14px; padding: 12px 20px; letter-spacing: 0.05em; }
+  .score-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+  .score-row:last-child { border-bottom: none; }
+  .score-label { color: rgba(255,255,255,0.75); font-weight: 300; }
+  .score-pts { color: var(--gold); font-weight: 500; }
+
+  /* ─── NOTICE ─── */
+  .notice-list { margin-top: 24px; }
+  .notice-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; color: rgba(255,255,255,0.9); font-weight: 300; line-height: 1.7; }
+  .notice-item:last-child { border-bottom: none; }
+  .notice-num { color: var(--coral); font-size: 13px; flex-shrink: 0; margin-top: 3px; font-weight: 500; }
+
+  /* ─── SCHEDULE ─── */
+  .sched-row { display: grid; grid-template-columns: 120px 80px 1fr; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .sched-row:last-child { border-bottom: none; }
+  .sched-cell { padding: 14px 16px; font-size: 14px; }
+  .sched-date { color: rgba(255,255,255,0.75); font-weight: 300; }
+  .sched-stage { color: var(--gold); font-weight: 500; font-size: 13px; }
+  .sched-task { color: rgba(255,255,255,0.92); font-weight: 300; }
+  .sched-row.deadline .sched-date, .sched-row.deadline .sched-stage, .sched-row.deadline .sched-task { color: var(--coral); }
+  .sched-row.deadline { background: rgba(20,5,5,0.5); }
+  @media (max-width: 500px) { .sched-row { grid-template-columns: 90px 60px 1fr; } .sched-cell { padding: 12px 10px; font-size: 13px; } }
+
+  /* ─── STEP ─── */
+  .step-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(245,237,190,0.08); border: 1px solid rgba(245,237,190,0.3); border-radius: 6px; padding: 6px 14px 6px 10px; margin-bottom: 24px; }
+  .step-num { background: var(--gold); color: #1A1A1A; font-weight: 900; font-size: 13px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
+  .step-name { color: var(--gold); font-size: 14px; letter-spacing: 0.05em; }
+
+  .purpose-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
+  @media (max-width: 600px) { .purpose-grid { grid-template-columns: 1fr; } }
+  .purpose-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 24px 20px; transition: border-color 0.2s; }
+  .purpose-card:hover { border-color: rgba(205,231,199,0.35); }
+  .purpose-icon { font-size: 22px; margin-bottom: 10px; }
+  .purpose-title { font-size: 14px; font-weight: 500; color: var(--gold); margin-bottom: 8px; }
+  .purpose-desc { font-size: 13px; color: #FFFFFF; line-height: 1.65; font-weight: 300; }
+
+  /* ─── DIR ─── */
+  .dir-block { margin-top: 40px; border-left: 3px solid rgba(245,237,190,0.5); padding-left: 24px; }
+  .dir-title { font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+  .dir-body { font-size: 15px; color: rgba(255,255,255,0.88); font-weight: 300; line-height: 1.8; margin-bottom: 16px; }
+
+  .prompt-box { background: rgba(168,200,232,0.06); border: 1px solid rgba(168,200,232,0.25); border-radius: 8px; padding: 20px 24px; margin-top: 16px; }
+  .prompt-label { font-size: 11px; letter-spacing: 0.15em; color: var(--teal); text-transform: uppercase; margin-bottom: 10px; }
+  .prompt-text { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.75; font-weight: 300; }
+
+  .bullet-list { margin-top: 16px; }
+  .bullet-item { display: flex; gap: 12px; padding: 8px 0; font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 300; line-height: 1.7; }
+  .bullet-item::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+
+  /* ─── COMPARE ─── */
+  .compare-table { margin-top: 24px; overflow: hidden; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+  .compare-header { display: grid; grid-template-columns: 1fr 1fr; }
+  .compare-col-header { padding: 12px 20px; font-size: 13px; font-weight: 500; }
+  .compare-col-header.bad { background: rgba(236,195,201,0.15); color: var(--coral); }
+  .compare-col-header.good { background: rgba(46,125,50,0.15); color: #81C784; }
+  .compare-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,0.05); }
+  .compare-cell { padding: 14px 20px; font-size: 14px; font-weight: 300; line-height: 1.6; }
+  .compare-cell.bad { color: rgba(255,255,255,0.5); font-style: italic; }
+  .compare-cell.good { color: rgba(255,255,255,0.95); border-left: 1px solid rgba(255,255,255,0.08); }
+  .compare-row:nth-child(odd) .compare-cell { background: rgba(255,255,255,0.02); }
+
+  .keyword-box { background: rgba(205,231,199,0.06); border: 1px solid rgba(205,231,199,0.2); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+  .keyword-label { font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kw { background: rgba(245,237,190,0.1); border: 1px solid rgba(245,237,190,0.3); color: var(--gold); padding: 5px 14px; border-radius: 2px; font-size: 14px; font-weight: 500; letter-spacing: 0.03em; }
+
+  /* ─── CONFLICT ─── */
+  .conflict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  @media (max-width: 580px) { .conflict-grid { grid-template-columns: 1fr; } }
+  .conflict-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+  .conflict-header { background: var(--gold); color: #1A1A1A; font-weight: 700; font-size: 14px; padding: 12px 18px; letter-spacing: 0.03em; }
+  .conflict-tension { background: rgba(245,237,190,0.04); padding: 14px 18px; font-size: 13px; color: rgba(255,255,255,0.75); font-style: italic; line-height: 1.6; }
+  .conflict-example { padding: 16px 18px; font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.75; font-weight: 300; border-top: 1px solid rgba(255,255,255,0.05); }
+
+  /* ─── FORMULA ─── */
+  .formula { margin-top: 32px; display: grid; grid-template-columns: 100px 1fr; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+  .formula-step { background: rgba(245,237,190,0.06); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 18px 16px; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 15px; color: #BAD0E5; }
+  .formula-desc { padding: 18px 24px; font-size: 14px; color: rgba(255,255,255,0.88); font-weight: 300; line-height: 1.7; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .formula-step:last-of-type, .formula-desc:last-of-type { border-bottom: none; }
+
+  /* ─── QUOTE ─── */
+  .big-quote { margin: 48px 0; padding: 32px 0 32px 32px; border-left: 3px solid var(--gold); }
+  .big-quote-text { font-family: 'Noto Serif TC', serif; font-size: clamp(18px, 3vw, 24px); font-weight: 400; color: rgba(255,255,255,0.92); line-height: 1.7; margin-bottom: 16px; }
+
+  /* ─── SKOOL ─── */
+  .skool-section { background: #0D0D0D; padding: 80px 24px; }
+  .struct-row { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; margin-bottom: 12px; overflow: hidden; }
+  .struct-header { background: rgba(205,231,199,0.1); border-bottom: 1px solid rgba(205,231,199,0.2); padding: 10px 20px; font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 0.05em; }
+  .struct-body { padding: 14px 20px; font-size: 14px; color: rgba(255,255,255,0.88); font-weight: 300; line-height: 1.7; }
+  .example-quote { background: rgba(245,237,190,0.05); border-left: 3px solid var(--gold); padding: 24px 24px 24px 28px; margin-top: 24px; border-radius: 0 4px 4px 0; }
+  .example-quote p { font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.9; font-weight: 300; margin-bottom: 8px; }
+  .example-quote p:last-child { margin-bottom: 0; }
+  .template-block { margin-top: 24px; }
+  .template-row { display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .template-row:last-child { border-bottom: none; }
+  .template-label { padding: 12px 16px; font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; letter-spacing: 0.05em; background: rgba(205,231,199,0.05); }
+  .template-content { padding: 12px 16px; font-size: 14px; color: rgba(255,255,255,0.88); font-weight: 300; line-height: 1.7; }
+
+  /* ─── ALERT / DEADLINE ─── */
+  .alert { background: rgba(20,5,5,0.7); border: 1px solid rgba(236,195,201,0.25); border-radius: 4px; padding: 20px 24px; margin-top: 24px; font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.75; font-weight: 300; }
+  .deadline-box { display: inline-flex; align-items: center; gap: 12px; background: rgba(20,5,5,0.7); border: 1px solid rgba(236,195,201,0.35); border-radius: 4px; padding: 12px 20px; margin-top: 16px; }
+  .deadline-dot { width: 8px; height: 8px; background: var(--coral); border-radius: 50%; animation: pulse 2s infinite; }
+  .deadline-text { font-size: 15px; color: var(--coral); font-weight: 500; }
+
+  /* ─── NAV ─── */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,26,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(245,237,190,0.15); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 52px; transform: translateY(-100%); transition: transform 0.3s ease; }
+  .nav.visible { transform: translateY(0); }
+  .nav-brand { font-size: 13px; color: var(--gold); font-weight: 500; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  @media (max-width: 500px) { .nav-links { display: none; } }
+
+  /* ─── FOOTER ─── */
+  .footer { background: #111; padding: 60px 24px 40px; text-align: center; border-top: 1px solid rgba(245,237,190,0.15); }
+  .footer-title { font-family: 'Noto Serif TC', serif; font-size: 20px; color: var(--gold); margin-bottom: 8px; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 300; margin-top: 32px; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <span class="nav-brand">發光四月陪跑賽</span>
+  <div class="nav-links">
+    <a href="#mission">任務</a>
+    <a href="#step1">第一步</a>
+    <a href="#step2">第二步</a>
+    <a href="#step3">第三步</a>
+    <a href="#formula">結構</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="badge">發光實驗室 · 4/6–4/12</span>
+  <h1 class="hero-title">故事行銷</h1>
+  <p class="hero-subtitle">把一件真實的事，說成讓人想看完的影片</p>
+  <p class="hero-lead">不是要你表演，不是要你有特別精彩的人生。你只需要找到一件真實發生過的事，然後用對的方式說出來。</p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">活動期間</div>
+      <div class="meta-value">4/6 – 4/12</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">截止時間</div>
+      <div class="meta-value">4/12 23:59</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">數據結算</div>
+      <div class="meta-value">4/15</div>
+    </div>
+  </div>
+  <div class="scroll-hint">往下看</div>
+</section>
+
+<!-- SQUAD INTRO --><!-- SQUAD INTRO -->
+<div style="background:#161616;border-bottom:1px solid rgba(205,231,199,0.18);">
+<div class="section reveal" style="padding-top:60px;padding-bottom:60px;">
+  <span class="section-label">第 10 組</span>
+  <h2 class="section-title" style="margin-bottom:32px;">小隊長 <span class="gold">QT</span></h2>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+
+    <div style="display:flex;gap:20px;align-items:flex-start;padding:22px 24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;">
+      <div style="flex-shrink:0;width:28px;height:28px;background:var(--gold);color:#1A1A1A;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-top:2px;">1</div>
+      <div>
+        <div style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">文案剪輯全部群組改</div>
+        <div style="font-size:14px;color:#FFFFFF;font-weight:300;line-height:1.85;">可以互相激勵、互相學習<br>因為很多人問題都是一樣的<br><br>小說明：我平常全職帶孩子，用零碎時間帶大家陪跑<br>所以訊息放群內，是為了確保我不會漏掉大家</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:20px;align-items:flex-start;padding:22px 24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;">
+      <div style="flex-shrink:0;width:28px;height:28px;background:var(--gold);color:#1A1A1A;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-top:2px;">2</div>
+      <div>
+        <div style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">我不會主動私訊要求交文案</div>
+        <div style="font-size:14px;color:#FFFFFF;font-weight:300;line-height:1.75;">大家都成年人，為自己的選擇負責 😆</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:20px;align-items:flex-start;padding:22px 24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;">
+      <div style="flex-shrink:0;width:28px;height:28px;background:var(--gold);color:#1A1A1A;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-top:2px;">3</div>
+      <div>
+        <div style="font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">群內 @All 的訊息，請大家按表情符號確認哦！</div>
+        <div style="font-size:14px;color:#FFFFFF;font-weight:300;line-height:1.75;">這樣我才安心大家都同步了 🙌</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- MISSION --><!-- MISSION -->
+<div style="background:#111;" id="mission">
+<div class="section reveal">
+  <span class="section-label">本週任務 · Mission</span>
+  <h2 class="section-title">這是一場<span class="gold">團隊戰</span><br>每一個人都很重要</h2>
+  <p class="lead-text">完成一支「故事行銷 Reels」，在截止前上線。影片上線後，依流量＆互動為團隊累積積分，最終由各組總積分決勝負。</p>
+  <p class="lead-text" style="color:#ECC3C9;font-size:15px;">你的每一分都是團隊的分數，缺席 = 少了一個戰力！</p>
+
+  <div class="deadline-box">
+    <div class="deadline-dot"></div>
+    <span class="deadline-text">截止：4/12（日）23:59</span>
+  </div>
+
+  <div class="card-row" style="margin-top:32px;">
+    <div class="card coral-card">
+      <div class="card-icon">🚫</div>
+      <div class="card-title">不代操、不代剪</div>
+      <div class="card-body">請自己完成拍攝與剪輯，這次活動的精神是激發你自己的潛能。</div>
+    </div>
+    <div class="card gold-card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">冠軍獎勵</div>
+      <div class="card-body">比賽第一名團隊將獲得：<br><br>1. 冠軍團隊餐敘<br>2. 米妃 / Peggy 限動轉發，讓更多人看見你！</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">#</div>
+      <div class="card-title">上架必加標籤</div>
+      <div class="card-body">上架後請加標籤 <strong style="color:#F5EDBE;">&#35;發光實驗室</strong>，方便後續統計數據。</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SCORE --><!-- SCORE -->
+<div style="background:#0D0D0D;">
+<div class="section reveal">
+  <span class="section-label">計分規則 · Scoring</span>
+  <h2 class="section-title">你的每一個<span class="gold">數據</span><br>都在幫整隊加分</h2>
+
+  <div class="score-grid">
+    <div class="score-block">
+      <div class="score-block-header">流量分數</div>
+      <div class="score-row"><span class="score-label">3,000 – 5,000</span><span class="score-pts">100 分</span></div>
+      <div class="score-row"><span class="score-label">5,001 – 10,000</span><span class="score-pts">300 分</span></div>
+      <div class="score-row"><span class="score-label">10,001 – 30,000</span><span class="score-pts">500 分</span></div>
+      <div class="score-row"><span class="score-label">30,001 – 100,000</span><span class="score-pts">800 分</span></div>
+      <div class="score-row"><span class="score-label">100,000+</span><span class="score-pts">1,000 分</span></div>
+    </div>
+    <div class="score-block">
+      <div class="score-block-header">互動分數</div>
+      <div class="score-row"><span class="score-label">❤️ 每 1 個按讚</span><span class="score-pts">1 分</span></div>
+      <div class="score-row"><span class="score-label">💬 每 1 則留言</span><span class="score-pts">1 分</span></div>
+      <div class="score-row"><span class="score-label">🔄 每 1 次轉發</span><span class="score-pts">1 分</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:20px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;">
+    <p style="font-size:15px;color:#F5EDBE;font-weight:500;margin-bottom:8px;">📊 數據在 4/15 結算</p>
+    <p style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:300;">流量 + 互動雙軌計分，比的是團隊總積分</p>
+  </div>
+</div>
+</div>
+
+<!-- RULES -->
+<div style="background:#111;">
+<div class="section reveal">
+  <span class="section-label">重要守則 · Guidelines</span>
+  <h2 class="section-title">過程中要知道<br><span class="gold">的事</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;">
+    <div style="background:rgba(205,231,199,0.06);border:1px solid rgba(205,231,199,0.2);border-radius:8px;padding:24px 20px;">
+      <div style="font-size:20px;margin-bottom:10px;">✅</div>
+      <div style="font-size:15px;font-weight:500;color:#CDE7C7;margin-bottom:8px;">可以求助資深小隊長</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.7;font-weight:300;">文案、畫面感、音樂節奏——有問題可以找有受過訓練的資深小隊長們</div>
+    </div>
+    <div style="background:rgba(236,195,201,0.06);border:1px solid rgba(236,195,201,0.2);border-radius:8px;padding:24px 20px;">
+      <div style="font-size:20px;margin-bottom:10px;">❌</div>
+      <div style="font-size:15px;font-weight:500;color:#ECC3C9;margin-bottom:8px;">不可以請隊長幫你想</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.7;font-weight:300;">本活動不代操、不代剪。學習是你自己的，隊長給的是方向，不是答案</div>
+    </div>
+    <div style="background:rgba(168,200,232,0.06);border:1px solid rgba(168,200,232,0.2);border-radius:8px;padding:24px 20px;">
+      <div style="font-size:20px;margin-bottom:10px;">🙏</div>
+      <div style="font-size:15px;font-weight:500;color:#A8C8E8;margin-bottom:8px;">務必有禮貌</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.7;font-weight:300;">小隊長們都是無私撥出時間的！背後也有老師們一同協助，放心求助但要有禮</div>
+    </div>
+    <div style="background:rgba(245,237,190,0.06);border:1px solid rgba(245,237,190,0.2);border-radius:8px;padding:24px 20px;">
+      <div style="font-size:20px;margin-bottom:10px;">💪</div>
+      <div style="font-size:15px;font-weight:500;color:#F5EDBE;margin-bottom:8px;">做就對了</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.7;font-weight:300;">不夠完美也沒關係。這支影片的目的是讓你學會說故事——過程就是成長</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- NOTICE -->
+<div style="background:#111;">
+<div class="section reveal">
+  <span class="section-label">注意事項 · Rules</span>
+  <h2 class="section-title">一起<span class="gold">合作共好</span></h2>
+  <div class="notice-list">
+    <div class="notice-item"><span class="notice-num">1️⃣</span>隊長只在活動期間陪跑「一篇」，請隊員主動完成構思，陪跑重點在於「激發潛能」而非「代勞任務」。</div>
+    <div class="notice-item"><span class="notice-num">2️⃣</span>請勿直接略過隊長跑來找老師和前隊長，隊長有問題都是有老師在旁連線對接，專注解決問題、合作共好，不吵架不罵髒話不輸出負能量。</div>
+    <div class="notice-item"><span class="notice-num">3️⃣</span>請勿使用抄襲、洗數據、買互動等不實行為。</div>
+    <div class="notice-item"><span class="notice-num">4️⃣</span>影片上架後，內文請記得加 <strong style="color:#F5EDBE;">&#35;發光實驗室</strong> 以利方便後續抓影片統計。</div>
+    <div class="notice-item"><span class="notice-num">5️⃣</span>請記得開啟 IG 後台流量、留言、分享的數據，小幫手才抓得到數據！</div>
+  </div>
+</div>
+</div>
+
+<!-- SCHEDULE --><!-- SCHEDULE -->
+<div style="background:#0D0D0D;">
+<div class="section reveal">
+  <span class="section-label">本週排程 · Schedule</span>
+  <h2 class="section-title">提早完成<br><span class="gold">提早上片</span></h2>
+  <p class="lead-text">影片愈早上線，累積的觀看時間愈長，演算法愈有機會把你推出去。做好了就發，每早一天都是優勢。</p>
+
+  <div class="schedule" style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;overflow:hidden;margin-top:24px;">
+    <div class="sched-row" style="background:rgba(205,231,199,0.15);">
+      <div class="sched-cell" style="color:#F5EDBE;font-size:12px;letter-spacing:0.1em;font-weight:500;">日期</div>
+      <div class="sched-cell" style="color:#F5EDBE;font-size:12px;letter-spacing:0.1em;font-weight:500;">階段</div>
+      <div class="sched-cell" style="color:#F5EDBE;font-size:12px;letter-spacing:0.1em;font-weight:500;">任務</div>
+    </div>
+    <div class="sched-row"><div class="sched-cell sched-date">4/6（一）</div><div class="sched-cell sched-stage">準備</div><div class="sched-cell sched-task">看範例 + 確定故事方向與目的</div></div>
+    <div class="sched-row"><div class="sched-cell sched-date">4/7（二）</div><div class="sched-cell sched-stage">文案</div><div class="sched-cell sched-task">寫故事文案草稿</div></div>
+    <div class="sched-row"><div class="sched-cell sched-date">4/8（三）</div><div class="sched-cell sched-stage">文案</div><div class="sched-cell sched-task">文案定稿、規劃拍攝腳本</div></div>
+    <div class="sched-row"><div class="sched-cell sched-date">4/9（四）</div><div class="sched-cell sched-stage">拍攝</div><div class="sched-cell sched-task">拍攝</div></div>
+    <div class="sched-row"><div class="sched-cell sched-date">4/10（五）</div><div class="sched-cell sched-stage">剪輯</div><div class="sched-cell sched-task">初剪 + 調整</div></div>
+    <div class="sched-row"><div class="sched-cell sched-date">4/11（六）</div><div class="sched-cell sched-stage">剪輯</div><div class="sched-cell sched-task">字幕、音樂、細節修</div></div>
+    <div class="sched-row deadline"><div class="sched-cell sched-date">4/12（日）</div><div class="sched-cell sched-stage">上片</div><div class="sched-cell sched-task">最終確認 + 上片！最晚 23:59</div></div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:rgba(20,5,5,0.6);border-color:rgba(236,195,201,0.4);">
+    <div class="card-title" style="color:#ECC3C9;">上片後記得做這件事！</div>
+    <div class="card-body">把影片連結貼到小隊群組 ＋ 發光大群，讓大家一起按愛心、留言、分享。<br><strong style="color:#F5EDBE;">你幫別人推，別人也幫你推——這週我們是一個團隊。</strong></div>
+  </div>
+</div>
+</div>
+
+<!-- SKOOL CONTENT -->
+
+<!-- 本次任務 -->
+<div style="background:#0D0D0D;">
+<div class="section reveal">
+  <span class="section-label">本次任務</span>
+  <h2 class="section-title">你要做的事：<br><span class="gold">一支故事行銷影片</span></h2>
+  <p class="lead-text">故事型內容只要做對，可以讓陌生粉絲秒感共鳴，甚至看完就想追蹤你。因為他們不是在追你的知識，是在追「你這個人」。</p>
+  <div style="margin-top:32px;padding:24px;background:rgba(245,237,190,0.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;">
+    <p style="font-size:16px;color:var(--gold);font-weight:500;margin-bottom:16px;">💡 每支影片上線前，問自己：這支影片想要帶來的效果是什麼？</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:14px;color:rgba(255,255,255,0.88);font-weight:300;">📌 撿流浪貓回家 ➡️ 立公益人設</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.88);font-weight:300;">📌 爸爸心臟病的領悟 ➡️ 立孝順人設</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.88);font-weight:300;">📌 爬101的Alex ➡️ 立創業人設</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 故事素材 -->
+<div style="background:#111;">
+<div class="section reveal">
+  <span class="section-label">故事素材</span>
+  <h2 class="section-title">故事從哪裡找？<br><span class="gold">3 個方向</span></h2>
+  <div style="display:flex;flex-direction:column;gap:16px;margin-top:32px;">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:28px 24px;display:flex;gap:20px;align-items:flex-start;">
+      <div style="font-size:28px;flex-shrink:0;">🌱</div>
+      <div>
+        <div style="font-size:16px;font-weight:700;color:var(--gold);margin-bottom:8px;">01 生命成長中重要的事</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.75;font-weight:300;">那些讓你變得不一樣的時刻——挫折、轉折、第一次做到某件事、突然想通的那個瞬間。不用特別偉大。</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:28px 24px;display:flex;gap:20px;align-items:flex-start;">
+      <div style="font-size:28px;flex-shrink:0;">⚡</div>
+      <div>
+        <div style="font-size:16px;font-weight:700;color:var(--gold);margin-bottom:8px;">02 生活中突然發生的事</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.75;font-weight:300;">今天在路上看見的事、突然來的一句話、一個讓你愣了三秒的畫面。最近發生的都可以。</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:28px 24px;display:flex;gap:20px;align-items:flex-start;">
+      <div style="font-size:28px;flex-shrink:0;">👥</div>
+      <div>
+        <div style="font-size:16px;font-weight:700;color:var(--gold);margin-bottom:8px;">03 第三人故事</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.75;font-weight:300;">朋友、名人、歷史人物。不說名字先鋪陳，最後揭曉——帶回自己的感觸才是關鍵。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 找到你的故事 -->
+<div style="background:#0D0D0D;">
+<div class="section reveal">
+  <span class="section-label">找到你的故事</span>
+  <h2 class="section-title">你的變現品項<br><span class="gold">背後有什麼故事？</span></h2>
+  <p class="lead-text">品項只是入口，故事才是讓人留下的理由。</p>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px;">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:20px 24px;display:flex;gap:16px;align-items:center;">
+      <div style="font-size:24px;flex-shrink:0;">✨</div>
+      <div><span style="color:var(--gold);font-weight:500;font-size:14px;">變現保養品</span><span style="color:rgba(255,255,255,0.6);font-size:14px;font-weight:300;"> ➡️ 分享皮膚出問題那段狼狽的日子</span></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:20px 24px;display:flex;gap:16px;align-items:center;">
+      <div style="font-size:24px;flex-shrink:0;">🔮</div>
+      <div><span style="color:var(--gold);font-weight:500;font-size:14px;">變現算命</span><span style="color:rgba(255,255,255,0.6);font-size:14px;font-weight:300;"> ➡️ 分享一個讓你相信命運可以改變的故事</span></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:20px 24px;display:flex;gap:16px;align-items:center;">
+      <div style="font-size:24px;flex-shrink:0;">💡</div>
+      <div><span style="color:var(--gold);font-weight:500;font-size:14px;">變現發光陪跑</span><span style="color:rgba(255,255,255,0.6);font-size:14px;font-weight:300;"> ➡️ 分享當初下定決心學習的轉捩點</span></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:20px 24px;display:flex;gap:16px;align-items:center;">
+      <div style="font-size:24px;flex-shrink:0;">💬</div>
+      <div><span style="color:var(--gold);font-weight:500;font-size:14px;">純分享</span><span style="color:rgba(255,255,255,0.6);font-size:14px;font-weight:300;"> ➡️ 生命中一件重要的事，小故事領悟人生大道理</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 影片架構 -->
+<div style="background:#111;">
+<div class="section reveal">
+  <span class="section-label">影片架構</span>
+  <h2 class="section-title">故事影片的<br><span class="gold">架構公式</span></h2>
+  <p style="font-size:14px;color:rgba(255,255,255,0.7);font-weight:300;margin-bottom:32px;">不是每一支故事都是為了變現，但你要清楚這支影片想帶來的效果！</p>
+  <div style="margin-bottom:24px;">
+    <div class="struct-row">
+      <div class="struct-header">公式 A — 自身故事型</div>
+      <div class="struct-body">衝突開頭 ＋ 畫面感細節鋪陳 ＋ 轉折連接詞 ＋ 成長或領悟 ＋ CTA</div>
+    </div>
+  </div>
+  <div>
+    <div class="struct-row">
+      <div class="struct-header">公式 B — 名人故事型</div>
+      <div class="struct-body">名人特點開場（不說名字）＋ 故事展開 ＋ 揭曉是誰 ＋ 帶回自己感觸 ＋ CTA</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 文案範例 -->
+<div style="background:#0D0D0D;">
+<div class="section reveal">
+  <span class="section-label">文案範例</span>
+  <h2 class="section-title">三個可以<br><span class="gold">直接套用的框架</span></h2>
+
+  <div style="margin-top:32px;">
+    <p style="font-size:14px;color:#F5EDBE;font-weight:500;letter-spacing:0.05em;margin-bottom:16px;">範例 1：自身故事型</p>
+    <div class="example-quote">
+      <p>我媽在我國中的時候就跑了。</p>
+      <p>留下我跟我爸，還有一個沒有人煮飯的廚房。</p>
+      <p>那時候我每天自己起床、自己搭車、自己買早餐——我以為我很獨立。</p>
+      <p>結果長大才發現，我只是很早就學會「不麻煩別人」，但我從來沒有學過「怎麼開口求助」。</p>
+      <p>直到我開始做自媒體，第一次在鏡頭前說出這件事，我才發現——原來這才是我跟別人不一樣的地方。</p>
+      <p style="margin-top:16px;color:#F5EDBE;">你有沒有一個故事，一直藏著，但其實說出來會讓人更靠近你？</p>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <p style="font-size:14px;color:#F5EDBE;font-weight:500;letter-spacing:0.05em;margin-bottom:16px;">範例 2：名人故事型（填空框架）</p>
+    <div class="template-block" style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;">
+      <div class="template-row"><div class="template-label">身份特徵</div><div class="template-content">有一個人，＿＿＿（身份特徵）他在＿＿＿歲的時候，做了一件＿＿＿的事</div></div>
+      <div class="template-row"><div class="template-label">畫面感細節</div><div class="template-content">時速＿＿＿ ／ 等了＿＿＿天 ／ 連＿＿＿都＿＿＿（具體場景，讓人有畫面）</div></div>
+      <div class="template-row"><div class="template-label">轉折＋揭曉</div><div class="template-content">結果 ／ 想不到 ／ 直到有一天……這個人是＿＿＿，他面對的衝突是：成長 VS 代價</div></div>
+      <div class="template-row"><div class="template-label">CTA</div><div class="template-content">看到這個故事，我突然發現＿＿＿，所以我決定＿＿＿</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <p style="font-size:14px;color:#F5EDBE;font-weight:500;letter-spacing:0.05em;margin-bottom:16px;">範例 3：自身故事型 2 — 衝突與成長</p>
+    <div class="template-block" style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;">
+      <div class="template-row"><div class="template-label">場景設定</div><div class="template-content">你們有沒有曾經遇過＿＿＿（狀態）偏偏＿＿＿（外部阻力）那時候我＿＿＿（數字／顏色／動作讓人有畫面）</div></div>
+      <div class="template-row"><div class="template-label">內心衝突</div><div class="template-content">我一直告訴自己＿＿＿，但我心裡其實知道＿＿＿</div></div>
+      <div class="template-row"><div class="template-label">成長與代價</div><div class="template-content">我選擇了＿＿＿，代價是＿＿＿，但我得到了＿＿＿</div></div>
+      <div class="template-row"><div class="template-label">價值觀升華</div><div class="template-content">現在我明白——＿＿＿（一句話總結信念）</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- AO TRAINING - BONUS -->
+<div style="background:#0A0A0A;">
+<div class="section reveal" style="max-width:800px;">
+  <span class="section-label" style="color:#CDE7C7;">✦ 彩蛋 · 深度教學</span>
+  <h2 class="section-title">奧哥給的<br><span class="gold">故事行銷底層邏輯</span></h2>
+  <p class="lead-text">看完架構和範例，想更深入理解「為什麼要這樣說」的，繼續往下看。</p>
+</div>
+</div>
+
+<!-- STEP 1 -->
+<div style="background:#111;" id="step1">
+<div class="section reveal">
+  <div class="step-badge"><div class="step-num">1</div><span class="step-name">先想清楚：你想用這支片做什麼？</span></div>
+
+  <p class="lead-text">在你想「要講什麼故事」之前，先想一件更重要的事：這支片做出來，你希望看的人有什麼感覺、做什麼事？</p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">問自己</div>
+    <div class="prompt-text">「看完這支片之後，我希望觀眾______。」<br><br>是認識你這個人？是對某件事產生好奇？是對你的產品產生興趣？<br>答案不一樣，你的故事方向就不一樣。</div>
+  </div>
+
+  <div class="purpose-grid">
+    <div class="purpose-card">
+      <div class="purpose-icon">🛍</div>
+      <div class="purpose-title">推廣產品或服務</div>
+      <div class="purpose-desc">故事是你的鋪墊。終點是：「他看完，會想多了解我賣的東西。」</div>
+    </div>
+    <div class="purpose-card">
+      <div class="purpose-icon">🪞</div>
+      <div class="purpose-title">讓人認識你</div>
+      <div class="purpose-desc">終點是：「他看完，會記得我是誰、想追蹤我。」</div>
+    </div>
+    <div class="purpose-card">
+      <div class="purpose-icon">💡</div>
+      <div class="purpose-title">說出你的觀點</div>
+      <div class="purpose-desc">終點是：「他看完，覺得我也這樣想，或我從來沒這樣想過。」</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.2);">
+    <div class="card-title" style="color:#F5EDBE;">還沒有產品也沒關係</div>
+    <div class="card-body">這次先做「讓人認識你」。你的故事說得好，人留住了，以後要推什麼都會比較容易。不是每支故事都要變現，先讓觀眾追你這個人。</div>
+  </div>
+</div>
+</div>
+
+<!-- STEP 2 -->
+<!-- STEP 2 -->
+<div style="background:#0D0D0D;" id="step2">
+<div class="section reveal">
+  <div class="step-badge"><div class="step-num">2</div><span class="step-name">找到你要說的故事</span></div>
+
+  <p class="lead-text">很多人這裡會卡住，覺得自己沒什麼故事可說。但其實不是你的人生不夠精彩——是你還沒找到切入的角度。</p>
+
+  <p style="color:rgba(255,255,255,0.85);font-size:14px;font-weight:300;margin-bottom:8px;">試試這三個方向，選一個你最有感覺的：</p>
+
+  <!-- 方向 A -->
+  <div class="dir-block">
+    <div class="dir-title">方向 A｜那件讓你變成現在這個樣子的事</div>
+    <div class="dir-body">不一定是大事，但一定是某個轉捩點——在那之前和之後，你是不一樣的人。</div>
+    <div class="prompt-box">
+      <div class="prompt-label">問自己</div>
+      <div class="prompt-text">「有沒有哪件事，如果沒發生，我今天不會在做這件事？」</div>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet-item">家庭：父母離婚、親人過世、某次爭吵後的和解</div>
+      <div class="bullet-item">身體：生病、受傷、某次意外讓你重新看待時間</div>
+      <div class="bullet-item">關係：感情、友情、職場上某次讓你受傷或成長的事</div>
+      <div class="bullet-item">選擇：辭職、創業、移居、決定走一條別人不看好的路</div>
+    </div>
+    <p style="margin-top:16px;font-size:14px;color:rgba(255,255,255,0.85);font-weight:300;">找到那件事之後，想想：因為這件事，你現在相信什麼？做了什麼不一樣的選擇？那就是你這支片的收尾。</p>
+  </div>
+
+  <!-- 方向 B -->
+  <div class="dir-block" style="margin-top:32px;">
+    <div class="dir-title">方向 B｜最近讓你停下來想一想的事</div>
+    <div class="dir-body">不需要是重大事件，就是最近一兩週，有什麼讓你有一秒鐘停下來感受的事。</div>
+    <div style="display:flex;align-items:center;gap:12px;margin:16px 0;flex-wrap:wrap;">
+      <div style="background:rgba(205,231,199,0.12);border:1px solid rgba(205,231,199,0.3);border-radius:3px;padding:8px 16px;font-size:13px;color:#F5EDBE;">發生了什麼事</div>
+      <div style="color:rgba(255,255,255,0.5);font-size:18px;">→</div>
+      <div style="background:rgba(205,231,199,0.12);border:1px solid rgba(205,231,199,0.3);border-radius:3px;padding:8px 16px;font-size:13px;color:#F5EDBE;">你的感觸是什麼</div>
+      <div style="color:rgba(255,255,255,0.5);font-size:18px;">→</div>
+      <div style="background:rgba(205,231,199,0.12);border:1px solid rgba(205,231,199,0.3);border-radius:3px;padding:8px 16px;font-size:13px;color:#F5EDBE;">你想說什麼給觀眾</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:14px 18px;font-size:13px;color:rgba(255,255,255,0.88);font-weight:300;line-height:1.7;">看到一則新聞讓你有感 → 觸動你對某件事的看法 → 你想讓觀眾也重新想一想這件事</div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:14px 18px;font-size:13px;color:rgba(255,255,255,0.88);font-weight:300;line-height:1.7;">和朋友的對話讓你突然想通了什麼 → 意識到自己一直在做一件沒意義的事 → 想說「停下來想一想，是值得的」</div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:14px 18px;font-size:13px;color:rgba(255,255,255,0.88);font-weight:300;line-height:1.7;">職場上遇到讓你心寒的事 → 你開始質疑自己的選擇 → 想說「有時候離開，是一種勇氣」</div>
+    </div>
+  </div>
+
+  <!-- 方向 C -->
+  <div class="dir-block" style="margin-top:32px;">
+    <div class="dir-title">方向 C｜完全沒靈感的時候，借別人的故事</div>
+    <div class="dir-body">如果你想了很久還是覺得沒什麼好講——先不要逼自己，改成想你最欣賞的一個人。</div>
+    <div class="prompt-box">
+      <div class="prompt-label">這樣想</div>
+      <div class="prompt-text">「那個人做過哪一件事，讓我印象最深刻、或對我影響最大？」<br>「那件事讓我有什麼感觸？那個感觸跟我現在在做的事有沒有關係？」<br><br>找到之後，用「有一個人……」開頭說這個故事，最後揭曉是誰，再說出你的感觸。<br>那個人可以是名人，也可以是身邊的朋友。<br><br><strong style="color:#F5EDBE;">名人故事順序：先說特點 → 說他做的事（先不說是誰） → 揭曉名字 → 你的感觸</strong></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- STEP 3 -->
+<!-- STEP 3 -->
+<div style="background:#111;" id="step3">
+<div class="section reveal">
+  <div class="step-badge"><div class="step-num">3</div><span class="step-name">讓你的故事說得有力量</span></div>
+
+  <p class="lead-text">素材找到了，接下來是怎麼說。這裡有三件事，做到了，你的故事就會從普通變得好看。</p>
+
+  <!-- 技巧 1 -->
+  <div class="divider"></div>
+  <h3 style="font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;color:#F5EDBE;margin-bottom:12px;">一、把感覺換成畫面</h3>
+  <p style="font-size:15px;color:rgba(255,255,255,0.92);font-weight:300;line-height:1.8;margin-bottom:24px;">不要說「很窮、很累、很感動」——說出那個讓你有那種感覺的具體場景。觀眾看不到你的感覺，但他們能看到你描述的畫面。畫面愈具體，他就愈能感同身受。</p>
+
+  <div class="compare-table">
+    <div class="compare-header">
+      <div class="compare-col-header bad">✕  說了，但沒感覺</div>
+      <div class="compare-col-header good">○  換成這樣，有了</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">我那時候很窮</div>
+      <div class="compare-cell good">大學時，我要等超商衛生紙特價，才敢去買</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">我很趕，急著出門</div>
+      <div class="compare-cell good">打卡剩五分鐘，請計程車司機在市區用時速 80 飆</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">我等了很久</div>
+      <div class="compare-cell good">整整等了 23 天，每天睡前忍不住先打開信箱</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">當時很緊張</div>
+      <div class="compare-cell good">老闆在罵人，我把手機壓在腿上，連動都不敢動，呼吸都放輕了</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">那個海很深</div>
+      <div class="compare-cell good">潛到八層樓深的海底，往上看，陽光只剩一個亮點</div>
+    </div>
+  </div>
+
+  <div class="prompt-box" style="margin-top:24px;">
+    <div class="prompt-label">寫完草稿後，做這件事</div>
+    <div class="prompt-text">找出所有「很多、很久、很窮、很累、很感動」這類詞。<br>每找到一個，問自己：「這個感受，有沒有一個具體的畫面或數字可以代替它？」<br>換過去，整個故事的感覺就不一樣了。</div>
+  </div>
+
+  <!-- 技巧 2 -->
+  <div class="divider" style="margin-top:48px;"></div>
+  <h3 style="font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;color:#F5EDBE;margin-bottom:12px;">二、在對的地方加一句轉折</h3>
+  <p style="font-size:15px;color:rgba(255,255,255,0.92);font-weight:300;line-height:1.8;margin-bottom:24px;">故事平鋪直敘，讀起來像流水帳。加一個轉折，觀眾才會跟著你的節奏走、想繼續看。</p>
+
+  <div class="keyword-box">
+    <div class="keyword-label">這些詞都可以製造轉折</div>
+    <div class="keywords">
+      <span class="kw">重點是</span>
+      <span class="kw">想不到</span>
+      <span class="kw">結果</span>
+      <span class="kw">竟然</span>
+      <span class="kw">突然發現</span>
+      <span class="kw">我嚇到</span>
+      <span class="kw">偏偏是</span>
+      <span class="kw">除非</span>
+      <span class="kw">直到</span>
+    </div>
+  </div>
+
+  <div class="compare-table" style="margin-top:16px;">
+    <div class="compare-header">
+      <div class="compare-col-header bad">✕  沒有轉折——像流水帳</div>
+      <div class="compare-col-header good">○  有連接詞——有了懸念</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">「我創業失敗，後來重新出發，現在還 OK。」</div>
+      <div class="compare-cell good">「我創業失敗，以為就這樣了——想不到，那竟然是我人生真正的起點。」</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell bad">「隔壁坐著一個人，那個人是我前女友。」</div>
+      <div class="compare-cell good">「隔壁可以坐任何人——偏偏是我前女友。」</div>
+    </div>
+  </div>
+
+  <!-- 技巧 3 -->
+  <div class="divider" style="margin-top:48px;"></div>
+  <h3 style="font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;color:#F5EDBE;margin-bottom:12px;">三、開頭就讓人有想看下去的理由</h3>
+  <p style="font-size:15px;color:rgba(255,255,255,0.92);font-weight:300;line-height:1.8;margin-bottom:24px;">觀眾決定要不要繼續看，只有前一兩秒。所以開頭不能從「大家好我是 OOO」開始。最有效的開頭，是直接丟出一個讓人好奇「結果怎麼了」的處境——一個衝突。</p>
+
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:32px;">
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:14px 20px;font-size:14px;color:rgba(255,255,255,0.92);font-weight:300;">自己 VS 別人：「所有人都說這樣不行，但我就是不相信。」</div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:14px 20px;font-size:14px;color:rgba(255,255,255,0.92);font-weight:300;">自己 VS 環境：「我在一個對我來說什麼都是困難的地方，試著撐下去。」</div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:14px 20px;font-size:14px;color:rgba(255,255,255,0.92);font-weight:300;">自己 VS 自己：「我明明知道不應該這樣，但我還是做了。」</div>
+  </div>
+
+  <div class="conflict-grid">
+    <div class="conflict-card">
+      <div class="conflict-header">成長 VS 代價</div>
+      <div class="conflict-tension">我付出了很大的代價，它讓我變了——但值得嗎？</div>
+      <div class="conflict-example">「那一年我辭掉工作創業，三個月後帳戶剩 3,000 塊。我媽說我瘋了——但那三個月，是我這輩子學最多的三個月。」</div>
+      <div class="conflict-example">「我花了兩年全心陪伴一段感情，最後換來一句：你太強了，我撐不住。我才知道，有時候成長的代價，是失去。」</div>
+    </div>
+    <div class="conflict-card">
+      <div class="conflict-header">堅持 VS 放棄</div>
+      <div class="conflict-tension">我快撐不下去了，到底要繼續，還是應該放手？</div>
+      <div class="conflict-example">「我做了美甲師八年，手每天都在發抖，客人越來越難服務——我真的還應該繼續嗎？」</div>
+      <div class="conflict-example">「經營自媒體兩年，粉絲還不到一千人。所有人都說放棄吧——只有我還在問自己：如果再給我三個月呢？」</div>
+    </div>
+  </div>
+
+  <div class="prompt-box" style="margin-top:24px;">
+    <div class="prompt-label">開頭的關鍵只有一件事</div>
+    <div class="prompt-text">寫完整個故事之後，問自己：「這裡面哪一句話最讓人想繼續看？」<br>——把那一句放到最前面。<br><br>越重要的東西，越要放前面。讓觀眾第一秒就有理由繼續看。</div>
+  </div>
+</div>
+</div>
+
+<!-- FORMULA -->
+<div style="background:#0D0D0D;" id="formula">
+<div class="section reveal">
+  <span class="section-label">故事結構 · Formula</span>
+  <h2 class="section-title">一支完整的<br><span class="gold">故事行銷影片</span></h2>
+
+  <div class="formula" style="margin-bottom:40px;">
+    <div class="formula-step">開頭</div>
+    <div class="formula-desc">丟出那個衝突或懸念。不要介紹自己，直接讓觀眾想問「然後呢？」</div>
+    <div class="formula-step">展開</div>
+    <div class="formula-desc">說具體發生的事。用畫面、用數字、用細節，讓人跟著你進入那個時刻</div>
+    <div class="formula-step">轉折</div>
+    <div class="formula-desc">用「想不到、竟然、直到……」帶出意外的發展。讓情緒有起伏</div>
+    <div class="formula-step">收尾</div>
+    <div class="formula-desc">說你的感觸、你的改變、或你想傳遞的一件事。讓人記得你這個人</div>
+  </div>
+
+  <div class="alert">
+    <strong style="color:#ECC3C9;">不要在故事開頭就出現你的產品、服務名稱，或任何推銷感的字眼。</strong><br><br>
+    觀眾一秒就感覺到了——然後直接跳走。<br><br>
+    先讓他們喜歡你這個人，再讓他們對你做的事產生興趣。這個順序不能反。
+  </div>
+</div>
+</div>
+
+
+
+<!-- BIG QUOTE -->
+<div style="background:#111;">
+<div class="section reveal">
+  <div class="big-quote">
+    <div class="big-quote-text">做故事行銷有個重點——讓自己成為那個瓜，讓人家吃。大家都喜歡聽有趣的故事，但不會記得一個很棒的廣告。</div>
+    <p style="font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:0.05em;">你的故事值得被看見 ✦</p>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-title">發光四月陪跑賽 · 故事行銷</div>
+  <p style="font-size:14px;color:rgba(255,255,255,0.75);margin-top:8px;font-weight:300;">發光實驗室  |  4/6–4/12</p>
+  <p class="footer-sub">加油，你的故事值得被看見</p>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav show after hero
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+  });
+</script>
+</body>
+</html>
